@@ -9,13 +9,6 @@ RUN apt-get install -y nano wget dialog net-tools
 # Download and Install Nginx
 RUN apt-get install -y nginx
 
-# Remove the default Nginx configuration file
-RUN rm -v /etc/nginx/nginx.conf
-
-# Replace config file with our own
-ADD nginx.conf /etc/nginx/nginx.conf
-RUN mkdir /tmp/nginx
-
 # Add the run script to start nginx
 ADD run.sh /tmp/nginx/run.sh
 RUN chmod +x /tmp/nginx/run.sh

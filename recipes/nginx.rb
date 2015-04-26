@@ -11,7 +11,7 @@ end
 
 docker_image 'austenito/austenito-nginx' do
   source '/tmp/nginx'
-  tag '1.4.6'
+  tag '1.4.6-ssl'
   action :pull_if_missing
   cmd_timeout 900
 end
@@ -22,10 +22,14 @@ if `sudo docker ps -a | grep nginx`.size > 0
 end
 
 docker_container 'nginx' do
-  image 'austenito/austenito-nginx:1.4.6'
+  image 'austenito/austenito-nginx:1.4.6-ssl'
   container_name 'nginx'
   port "80:80"
   volumes_from 'blog'
+  volume [
+    '/usr/local/certs:/usr/local/certs',
+    '/usr/local/nginx:/usr/local/nginx',
+  ]
   detach true
   action :run
 end
