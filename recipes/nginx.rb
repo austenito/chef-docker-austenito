@@ -24,7 +24,7 @@ end
 docker_container 'nginx' do
   image 'austenito/austenito-nginx:1.4.6-ssl'
   container_name 'nginx'
-  port ['80:80', '443, 443']
+  port ['80:80', '443:443']
   volumes_from 'blog'
   volume [
     '/usr/local/certs:/usr/local/certs',
