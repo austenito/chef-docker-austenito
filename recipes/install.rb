@@ -1,6 +1,7 @@
 package 'vim'
 package 'gcc'
 package 'make'
+package 'openssl'
 
 execute 'update apt' do
   command 'sudo apt-get update'
